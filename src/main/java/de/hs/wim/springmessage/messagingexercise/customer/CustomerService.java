@@ -1,6 +1,5 @@
 package de.hs.wim.springmessage.messagingexercise.customer;
 
-import de.hs.wim.springmessage.messagingexercise.events.CustomerBlockEvent;
 import de.hs.wim.springmessage.messagingexercise.events.CustomerChangeEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,15 +20,6 @@ public class CustomerService {
 		
 		CustomerChangeEvent event= new CustomerChangeEvent(customerId);
 		this.applicationEventPublisher.publishEvent(event);
-	}
-	
-	private void blockCustomer(int customerId) {
-		logger.info("CustomerId {} blocked", customerId);
-	}
-	
-	@EventListener
-	private void onApplicationEvent(CustomerBlockEvent event) {
-		this.blockCustomer(event.getCustomerId());
 	}
 
 }
